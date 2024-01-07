@@ -5,7 +5,6 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\MiddlewareController;
 use App\Http\Controllers\SessionController;
-use App\Http\Controllers\AuthorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +17,7 @@ use App\Http\Controllers\AuthorController;
 |
 */
 
-Route::get('/', [AuthorController::class, 'index']);
+Route::get('/', [TestController::class, 'index']);
 Route::get('/test', [TestController::class, 'index']);
 Route::get('/hello', [HelloController::class, 'index']);
 Route::get('/test/{text?}', [TestController::class, 'index']);
