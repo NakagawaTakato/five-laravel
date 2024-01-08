@@ -1,40 +1,36 @@
-@extends('layouts.default')
-<style>
-  th {
-    background-color: #289ADC;
-    color: white;
-    padding: 5px 40px;
-  }
+@extends('layouts.app')
 
-  tr:nth-child(odd) td {
-    background-color: #FFFFFF;
-  }
-
-  td {
-    padding: 25px 40px;
-    background-color: #EEEEEE;
-    text-align: center;
-  }
-
-  svg.w-5.h-5 {
-    width: 30px;
-    height: 30px;
-  }
-</style>
-@section('title', 'index.blade.php')
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/index.css') }}">
+@endsection
 
 @section('content')
-<table>
-  <tr>
-    <th>Data</th>
-  </tr>
-  @foreach ($authors as $author)
-  <tr>
-    <td>
-      {{$author->getDetail()}}
-    </td>
-  </tr>
-  @endforeach
-</table>
-{{ $authors->links() }}
+<div class="attendance__alert">
+  // メッセージ機能
+</div>
+
+<div class="attendance__content">
+  <div class="attendance__panel">
+    <form class="attendance__button">
+      <button class="attendance__button-submit" type="submit">勤務開始</button>
+    </form>
+    <form class="attendance__button">
+      <button class="attendance__button-submit" type="submit">勤務終了</button>
+    </form>
+  </div>
+  <div class="attendance-table">
+    <table class="attendance-table__inner">
+      <tr class="attendance-table__row">
+        <th class="attendance-table__header">名前</th>
+        <th class="attendance-table__header">開始時間</th>
+        <th class="attendance-table__header">終了時間</th>
+      </tr>
+      <tr class="attendance-table__row">
+        <td class="attendance-table__item">サンプル太郎</td>
+        <td class="attendance-table__item">サンプル</td>
+        <td class="attendance-table__item">サンプル</td>
+      </tr>
+    </table>
+  </div>
+</div>
 @endsection

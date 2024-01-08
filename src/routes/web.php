@@ -5,6 +5,9 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\MiddlewareController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\AuthController;
+use App\Models\Person;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +20,7 @@ use App\Http\Controllers\SessionController;
 |
 */
 
-Route::get('/', [TestController::class, 'index']);
+Route::get('/', [AuthController::class, 'index']);
 Route::get('/test', [TestController::class, 'index']);
 Route::get('/hello', [HelloController::class, 'index']);
 Route::get('/test/{text?}', [TestController::class, 'index']);
@@ -25,5 +28,11 @@ Route::get('/middleware', [MiddlewareController::class, 'index']);
 Route::post('/middleware', [MiddlewareController::class, 'post']);
 Route::get('/session', [SessionController::class, 'getSes']);
 Route::post('/session', [SessionController::class, 'postSes']);
+Route::middleware('auth')->group(function () {
+    Route::get('/', [AuthController::class, 'index']);
+});
+Route::get('/softdelete', function () {
+    Person::find(1)->delete();
+});
 
 
